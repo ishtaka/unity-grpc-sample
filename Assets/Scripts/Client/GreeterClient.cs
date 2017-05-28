@@ -10,9 +10,17 @@ public class GreeterClient : MonoBehaviour
     [SerializeField]
     Button button;
 
+    [SerializeField]
+    InputField input;
+
+    [SerializeField]
+    Text output;
+
     void Start()
     {
-        button.OnClickAsObservable().Subscribe(_ => Send()).AddTo(this);
+        button.OnClickAsObservable()
+            .Subscribe(_ => Send())
+            .AddTo(this);
     }
 
     void Send()
@@ -20,10 +28,10 @@ public class GreeterClient : MonoBehaviour
         Channel channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
 
         var client = new Greeter.GreeterClient(channel);
-        String user = "you";
+        String user = input.text;
 
         HelloReply reply = client.SayHello(new HelloRequest { Name = user });
-        Debug.Log("Greeting: " + reply.Message);
+        output.text = reply.Message;
 
         channel.ShutdownAsync();
     }
