@@ -165,6 +165,119 @@ namespace Grpc.Core.Internal
 
         #endregion
 
+        public NativeMethods()
+        {
+            this.grpcsharp_init = NativeCalls.grpcsharp_init;
+            this.grpcsharp_shutdown = NativeCalls.grpcsharp_shutdown;
+            this.grpcsharp_version_string = NativeCalls.grpcsharp_version_string;
+
+            this.grpcsharp_batch_context_create = NativeCalls.grpcsharp_batch_context_create;
+            this.grpcsharp_batch_context_recv_initial_metadata = NativeCalls.grpcsharp_batch_context_recv_initial_metadata;
+            this.grpcsharp_batch_context_recv_message_length = NativeCalls.grpcsharp_batch_context_recv_message_length;
+            this.grpcsharp_batch_context_recv_message_to_buffer = NativeCalls.grpcsharp_batch_context_recv_message_to_buffer;
+            this.grpcsharp_batch_context_recv_status_on_client_status = NativeCalls.grpcsharp_batch_context_recv_status_on_client_status;
+            this.grpcsharp_batch_context_recv_status_on_client_details = NativeCalls.grpcsharp_batch_context_recv_status_on_client_details;
+            this.grpcsharp_batch_context_recv_status_on_client_trailing_metadata = NativeCalls.grpcsharp_batch_context_recv_status_on_client_trailing_metadata;
+            this.grpcsharp_batch_context_recv_close_on_server_cancelled = NativeCalls.grpcsharp_batch_context_recv_close_on_server_cancelled;
+            this.grpcsharp_batch_context_destroy = NativeCalls.grpcsharp_batch_context_destroy;
+
+            this.grpcsharp_request_call_context_create = NativeCalls.grpcsharp_request_call_context_create;
+            this.grpcsharp_request_call_context_call = NativeCalls.grpcsharp_request_call_context_call;
+            this.grpcsharp_request_call_context_method = NativeCalls.grpcsharp_request_call_context_method;
+            this.grpcsharp_request_call_context_host = NativeCalls.grpcsharp_request_call_context_host;
+            this.grpcsharp_request_call_context_deadline = NativeCalls.grpcsharp_request_call_context_deadline;
+            this.grpcsharp_request_call_context_request_metadata = NativeCalls.grpcsharp_request_call_context_request_metadata;
+            this.grpcsharp_request_call_context_destroy = NativeCalls.grpcsharp_request_call_context_destroy;
+
+            this.grpcsharp_composite_call_credentials_create = NativeCalls.grpcsharp_composite_call_credentials_create;
+            this.grpcsharp_call_credentials_release = NativeCalls.grpcsharp_call_credentials_release;
+
+            this.grpcsharp_call_cancel = NativeCalls.grpcsharp_call_cancel;
+            this.grpcsharp_call_cancel_with_status = NativeCalls.grpcsharp_call_cancel_with_status;
+            this.grpcsharp_call_start_unary = NativeCalls.grpcsharp_call_start_unary;
+            this.grpcsharp_call_start_client_streaming = NativeCalls.grpcsharp_call_start_client_streaming;
+            this.grpcsharp_call_start_server_streaming = NativeCalls.grpcsharp_call_start_server_streaming;
+            this.grpcsharp_call_start_duplex_streaming = NativeCalls.grpcsharp_call_start_duplex_streaming;
+            this.grpcsharp_call_send_message = NativeCalls.grpcsharp_call_send_message;
+            this.grpcsharp_call_send_close_from_client = NativeCalls.grpcsharp_call_send_close_from_client;
+            this.grpcsharp_call_send_status_from_server = NativeCalls.grpcsharp_call_send_status_from_server;
+            this.grpcsharp_call_recv_message = NativeCalls.grpcsharp_call_recv_message;
+            this.grpcsharp_call_recv_initial_metadata = NativeCalls.grpcsharp_call_recv_initial_metadata;
+            this.grpcsharp_call_start_serverside = NativeCalls.grpcsharp_call_start_serverside;
+            this.grpcsharp_call_send_initial_metadata = NativeCalls.grpcsharp_call_send_initial_metadata;
+            this.grpcsharp_call_set_credentials = NativeCalls.grpcsharp_call_set_credentials;
+            this.grpcsharp_call_get_peer = NativeCalls.grpcsharp_call_get_peer;
+            this.grpcsharp_call_destroy = NativeCalls.grpcsharp_call_destroy;
+
+            this.grpcsharp_channel_args_create = NativeCalls.grpcsharp_channel_args_create;
+            this.grpcsharp_channel_args_set_string = NativeCalls.grpcsharp_channel_args_set_string;
+            this.grpcsharp_channel_args_set_integer = NativeCalls.grpcsharp_channel_args_set_integer;
+            this.grpcsharp_channel_args_destroy = NativeCalls.grpcsharp_channel_args_destroy;
+
+            this.grpcsharp_override_default_ssl_roots = NativeCalls.grpcsharp_override_default_ssl_roots;
+            this.grpcsharp_ssl_credentials_create = NativeCalls.grpcsharp_ssl_credentials_create;
+            this.grpcsharp_composite_channel_credentials_create = NativeCalls.grpcsharp_composite_channel_credentials_create;
+            this.grpcsharp_channel_credentials_release = NativeCalls.grpcsharp_channel_credentials_release;
+
+            this.grpcsharp_insecure_channel_create = NativeCalls.grpcsharp_insecure_channel_create;
+            this.grpcsharp_secure_channel_create = NativeCalls.grpcsharp_secure_channel_create;
+            this.grpcsharp_channel_create_call = NativeCalls.grpcsharp_channel_create_call;
+            this.grpcsharp_channel_check_connectivity_state = NativeCalls.grpcsharp_channel_check_connectivity_state;
+            this.grpcsharp_channel_watch_connectivity_state = NativeCalls.grpcsharp_channel_watch_connectivity_state;
+            this.grpcsharp_channel_get_target = NativeCalls.grpcsharp_channel_get_target;
+            this.grpcsharp_channel_destroy = NativeCalls.grpcsharp_channel_destroy;
+
+            this.grpcsharp_sizeof_grpc_event = NativeCalls.grpcsharp_sizeof_grpc_event;
+
+            this.grpcsharp_completion_queue_create = NativeCalls.grpcsharp_completion_queue_create;
+            this.grpcsharp_completion_queue_shutdown = NativeCalls.grpcsharp_completion_queue_shutdown;
+            this.grpcsharp_completion_queue_next = NativeCalls.grpcsharp_completion_queue_next;
+            this.grpcsharp_completion_queue_pluck = NativeCalls.grpcsharp_completion_queue_pluck;
+            this.grpcsharp_completion_queue_destroy = NativeCalls.grpcsharp_completion_queue_destroy;
+
+            this.gprsharp_free = NativeCalls.gprsharp_free;
+
+            this.grpcsharp_metadata_array_create = NativeCalls.grpcsharp_metadata_array_create;
+            this.grpcsharp_metadata_array_add = NativeCalls.grpcsharp_metadata_array_add;
+            this.grpcsharp_metadata_array_count = NativeCalls.grpcsharp_metadata_array_count;
+            this.grpcsharp_metadata_array_get_key = NativeCalls.grpcsharp_metadata_array_get_key;
+            this.grpcsharp_metadata_array_get_value = NativeCalls.grpcsharp_metadata_array_get_value;
+            this.grpcsharp_metadata_array_destroy_full = NativeCalls.grpcsharp_metadata_array_destroy_full;
+
+            this.grpcsharp_redirect_log = NativeCalls.grpcsharp_redirect_log;
+
+            this.grpcsharp_metadata_credentials_create_from_plugin = NativeCalls.grpcsharp_metadata_credentials_create_from_plugin;
+            this.grpcsharp_metadata_credentials_notify_from_plugin = NativeCalls.grpcsharp_metadata_credentials_notify_from_plugin;
+
+            this.grpcsharp_ssl_server_credentials_create = NativeCalls.grpcsharp_ssl_server_credentials_create;
+            this.grpcsharp_server_credentials_release = NativeCalls.grpcsharp_server_credentials_release;
+
+            this.grpcsharp_server_create = NativeCalls.grpcsharp_server_create;
+            this.grpcsharp_server_register_completion_queue = NativeCalls.grpcsharp_server_register_completion_queue;
+            this.grpcsharp_server_add_insecure_http2_port = NativeCalls.grpcsharp_server_add_insecure_http2_port;
+            this.grpcsharp_server_add_secure_http2_port = NativeCalls.grpcsharp_server_add_secure_http2_port;
+            this.grpcsharp_server_start = NativeCalls.grpcsharp_server_start;
+            this.grpcsharp_server_request_call = NativeCalls.grpcsharp_server_request_call;
+            this.grpcsharp_server_cancel_all_calls = NativeCalls.grpcsharp_server_cancel_all_calls;
+            this.grpcsharp_server_shutdown_and_notify_callback = NativeCalls.grpcsharp_server_shutdown_and_notify_callback;
+            this.grpcsharp_server_destroy = NativeCalls.grpcsharp_server_destroy;
+
+            this.grpcsharp_call_auth_context = NativeCalls.grpcsharp_call_auth_context;
+            this.grpcsharp_auth_context_peer_identity_property_name = NativeCalls.grpcsharp_auth_context_peer_identity_property_name;
+            this.grpcsharp_auth_context_property_iterator = NativeCalls.grpcsharp_auth_context_property_iterator;
+            this.grpcsharp_auth_property_iterator_next = NativeCalls.grpcsharp_auth_property_iterator_next;
+            this.grpcsharp_auth_context_release = NativeCalls.grpcsharp_auth_context_release;
+
+            this.gprsharp_now = NativeCalls.gprsharp_now;
+            this.gprsharp_inf_future = NativeCalls.gprsharp_inf_future;
+            this.gprsharp_inf_past = NativeCalls.gprsharp_inf_past;
+            this.gprsharp_convert_clock_type = NativeCalls.gprsharp_convert_clock_type;
+            this.gprsharp_sizeof_timespec = NativeCalls.gprsharp_sizeof_timespec;
+
+            this.grpcsharp_test_callback = NativeCalls.grpcsharp_test_callback;
+            this.grpcsharp_test_nop = NativeCalls.grpcsharp_test_nop;
+        }
+
         public NativeMethods(UnmanagedLibrary library)
         {
             this.grpcsharp_init = GetMethodDelegate<Delegates.grpcsharp_init_delegate>(library);

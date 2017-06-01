@@ -52,8 +52,12 @@ namespace Grpc.Core.Internal
 
         private NativeExtension()
         {
+#if UNITY_IOS
+            this.nativeMethods = new NativeMethods();
+#else
             this.nativeMethods = new NativeMethods(Load());
-            
+#endif
+
             // Redirect the the native logs as the very first thing after loading the native extension
             // to make sure we don't lose any logs.
             NativeLogRedirector.Redirect(this.nativeMethods);
@@ -73,7 +77,8 @@ namespace Grpc.Core.Internal
             {
                 lock (staticLock)
                 {
-                    if (instance == null) {
+                    if (instance == null)
+                    {
                         instance = new NativeExtension();
                     }
                 }
@@ -111,8 +116,16 @@ namespace Grpc.Core.Internal
             var netCorePublishedAppStylePath = Path.Combine(assemblyDirectory, runtimesDirectory, GetNativeLibraryFilename());
             var netCoreAppStylePath = Path.Combine(assemblyDirectory, "../..", runtimesDirectory, GetNativeLibraryFilename());
 
+#if UNITY_EDITOR
+            var coreRuntimePath = Path.Combine(UnityEngine.Application.dataPath, "Plugins/Grpc.Core", runtimesDirectory, GetNativeLibraryFilename());
+#elif UNITY_STANDALONE_OSX
+            var coreRuntimePath = Path.Combine(UnityEngine.Application.dataPath, "Plugins", GetNativeLibraryFilename());
+#else
+            var coreRuntimePath = Path.Combine(assemblyDirectory, "Plugins", GetNativeLibraryFilename());
+#endif
+
             // Look for all native library in all possible locations in given order.
-            string[] paths = new[] { classicPath, netCorePublishedAppStylePath, netCoreAppStylePath};
+            string[] paths = new[] { classicPath, netCorePublishedAppStylePath, netCoreAppStylePath, coreRuntimePath };
             return new UnmanagedLibrary(paths);
         }
 

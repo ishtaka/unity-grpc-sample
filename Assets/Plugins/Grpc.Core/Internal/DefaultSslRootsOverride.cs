@@ -54,12 +54,13 @@ namespace Grpc.Core.Internal
         /// </summary>
         public static void Override(NativeMethods native)
         {
+            /**
             lock (staticLock)
             {
                 var stream = typeof(DefaultSslRootsOverride).GetTypeInfo().Assembly.GetManifestResourceStream(RootsPemResourceName);
                 if (stream == null)
                 {
-                    throw new IOException(string.Format("Error loading the embedded resource \"{0}\"", RootsPemResourceName));   
+                    throw new IOException(string.Format("Error loading the embedded resource \"{0}\"", RootsPemResourceName));
                 }
                 using (var streamReader = new StreamReader(stream))
                 {
@@ -67,6 +68,7 @@ namespace Grpc.Core.Internal
                     native.grpcsharp_override_default_ssl_roots(pemRootCerts);
                 }
             }
+            */
         }
     }
 }
