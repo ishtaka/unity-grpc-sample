@@ -16,23 +16,47 @@ public class GreeterClient : MonoBehaviour
     [SerializeField]
     Text output;
 
+    [SerializeField]
+    Button createChButton;
+
+    [SerializeField]
+    InputField serverIp;
+
+    Channel channel;
+
     void Start()
     {
         button.OnClickAsObservable()
             .Subscribe(_ => Send())
             .AddTo(this);
+
+        createChButton.OnClickAsObservable()
+            .Subscribe(_ => CreateChannel())
+            .AddTo(this);
+    }
+
+    void CreateChannel()
+    {
+        var ip = serverIp.text + ":50051";
+        channel = new Channel(ip, ChannelCredentials.Insecure);
     }
 
     void Send()
     {
-        Channel channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
+        if (channel == null)
+            return;
 
-        var client = new Greeter.GreeterClient(channel);
-        String user = input.text;
+        try
+        {
+            var client = new Greeter.GreeterClient(channel);
+            String user = input.text;
 
-        HelloReply reply = client.SayHello(new HelloRequest { Name = user });
-        output.text = reply.Message;
-
-        channel.ShutdownAsync();
+            HelloReply reply = client.SayHello(new HelloRequest { Name = user });
+            output.text = reply.Message;
+        }
+        catch (Exception e)
+        {
+            output.text = e.Message;
+        }
     }
 }
