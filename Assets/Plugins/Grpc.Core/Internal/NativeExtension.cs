@@ -52,7 +52,7 @@ namespace Grpc.Core.Internal
 
         private NativeExtension()
         {
-#if UNITY_IOS
+#if !UNITY_EDITOR && UNITY_IOS
             this.nativeMethods = new NativeMethods();
 #else
             this.nativeMethods = new NativeMethods(Load());

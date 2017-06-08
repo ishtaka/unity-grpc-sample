@@ -66,6 +66,7 @@ namespace Grpc.Core.Internal
             }
         }
 
+        [AOT.MonoPInvokeCallback(typeof(GprLogDelegate))]
         private static void HandleWrite(IntPtr fileStringPtr, int line, ulong threadId, IntPtr severityStringPtr, IntPtr msgPtr)
         {
             try
@@ -74,10 +75,10 @@ namespace Grpc.Core.Internal
                 string severityString = Marshal.PtrToStringAnsi(severityStringPtr);
                 string message = string.Format("{0} {1}:{2}: {3}",
                     threadId,
-                    Marshal.PtrToStringAnsi(fileStringPtr), 
-                    line, 
+                    Marshal.PtrToStringAnsi(fileStringPtr),
+                    line,
                     Marshal.PtrToStringAnsi(msgPtr));
-                
+
                 switch (severityString)
                 {
                     case "D":
